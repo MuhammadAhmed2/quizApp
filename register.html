@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register Forms</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+
+            <form id="registerForm" class="form">
+                <h2>Register</h2>
+                <label for="registerName">Name:</label>
+                <input type="text" id="registerName" name="name" required>
+                <label for="registerEmail">Email:</label>
+                <label class="alert" for="registerEmail">*Email Already Exist</label>
+                <input type="email" id="registerEmail" name="email" required>
+                <label for="registerPassword">Password:</label>
+                <input type="password" id="registerPassword" name="password" required>
+                <button type="submit" id="registerButton">Register</button>
+            </form>
+            <p class="note">Already a have an account <a href="./index.html" class="bold">Login Here</a></p>
+        </div>
+    </div>
+    <script src="./register.js"></script>
+</body>
+</html>

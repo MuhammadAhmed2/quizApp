@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    background-color: white;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav h1 {
+    color: #54ccf8;
+    margin-left: 10px;
+}
+
+nav h3 {
+    color: #333;
+}
+
+.main-container {
+    padding: 2%;
+}
+
+.heading {
+    font-weight: 800;
+    margin-bottom: 3%;
+    color: #54ccf8;
+    text-align: center;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.course {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 5%;
+}
+
+.course img {
+    max-width: 100px;
+    transition: transform 0.3s ease;
+}
+
+.course:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.course:hover img {
+    transform: scale(1.05);
+}
+
+.text {
+    padding: 15px;
+}
+
+.text h2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.text h4 {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #666;
+}
+
+.text p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.text .price {
+    font-weight: 500;
+    color: #54ccf8;
+    margin-top: 10px;
+    margin-bottom: 8%;
+}
+.watch-btn{
+    border-radius: 25px;
+    background-color: #54ccf8;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+}

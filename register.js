@@ -15,6 +15,7 @@ if (items === null) {
             userName: 'Ahmed',
             userEmail: 'exact.ahmed@gmail.com',
             userPassword: 'momo2006',
+            courses:[],
             overallScore: 142
         },
     ];

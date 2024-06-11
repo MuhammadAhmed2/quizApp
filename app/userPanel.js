@@ -105,6 +105,7 @@ const courseData = (course) => {
     console.log(arr);
     let stinfiedData = JSON.stringify(arr);
         localStorage.setItem('courseData', stinfiedData);
+        window.location.href = './coursePage.html';
 }
 
 userPronoun.innerHTML = user[0].userName;

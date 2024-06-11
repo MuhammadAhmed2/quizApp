@@ -19,6 +19,15 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.course-container {
+    flex-direction: column;
+    padding: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav h1 {
     color: #54ccf8;
     margin-left: 10px;
@@ -42,6 +51,19 @@ nav h3 {
     color: #fff;
 }
 
+.courseHeader {
+    filter: grayscale(50%);
+    min-height: 27rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
 .user-info {
     display: flex;
     align-items: center;
@@ -54,16 +76,12 @@ nav h3 {
     margin-left: 10px;
 }
 
-
-.main-container {
-    padding: 2%;
-}
-
 .heading {
     font-weight: 800;
     margin-bottom: 3%;
     color: #54ccf8;
     text-align: center;
+    width: 100%;
 }
 
 .courses {
@@ -123,12 +141,15 @@ nav h3 {
     margin-top: 10px;
     margin-bottom: 8%;
 }
-.watch-btn{
+
+.watch-btn {
     border-radius: 25px;
     background-color: #54ccf8;
     color: white;
     padding: 15px 25px;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
 
 .quiz {
@@ -180,6 +201,10 @@ nav h3 {
     transition: background-color 0.3s ease;
 }
 
+.watch-btn:hover {
+    background-color: #46b1d8;
+}
+
 .quiz-btn:hover {
     background-color: #46b1d8;
 }
@@ -193,4 +218,13 @@ nav h3 {
 .score h3 {
     color: #333;
     font-weight: normal;
+}
+
+.video-section {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#player {
+    margin-bottom: 10px;
 }

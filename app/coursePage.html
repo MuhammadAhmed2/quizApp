@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Page</title>
     <link rel="stylesheet" href="./userPanel.css">
 </head>
+
 <body>
     <nav class="container">
         <div class="logo">
@@ -13,22 +15,28 @@
         </div>
         <div class="user-info">
             <h3 class="userName">Muhammad Ahmed</h3>
-            <img class="avatar" src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" alt="Avatar Placeholder">
+            <img class="avatar"
+                src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
+                alt="Avatar Placeholder">
         </div>
     </nav>
 
     <div class="courseHeader"></div>
     <div class="container main-container">
-        <h1 style="margin-bottom: 15%; color: #fff; background-color: #54ccf8; padding: 1.2rem;" id="courseName" class="heading">Course Name</h1>
+        <h1 id="courseName" class="heading">Course Name</h1>
         <div class="master">
-
-            <h2 style="color: #54ccf8;" id="videoTitle">Video Title</h2>
-        <div class="video-section">
-            <div id="player"></div>
+            <h2 id="videoTitle" class="video-title">Video Title</h2>
+            <div class="video-section">
+                <div id="player"></div>
+            </div>
+            <div class="video-controls">
+                <button class="watch-btn" id="prevVideoBtn">Previous Video</button>
+                <button class="watch-btn" id="nextVideoBtn">Next Video</button>
+            </div>
+            <p id="videoDescription" class="video-description">Video Description</p>
         </div>
-    <button class="watch-btn" id="nextVideoBtn">Next Video</button>
-    </div>
     </div>
     <script src="./coursePage.js"></script>
 </body>
+
 </html>

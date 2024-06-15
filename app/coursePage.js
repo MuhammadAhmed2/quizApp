@@ -1,10 +1,12 @@
 let userPronoun = document.querySelector('.userName');
 let courseName = document.getElementById('courseName');
 let videoTitle = document.getElementById('videoTitle');
+let videoDescription = document.getElementById('videoDescription');
 let user = JSON.parse(localStorage.getItem('user'));
-console.log(user);
 let courseData = JSON.parse(localStorage.getItem('courseData'));
-console.log(courseData);
+// Event listener for the Next Video button
+let nextBtn = document.getElementById('nextVideoBtn')
+let preBtn = document.getElementById('prevVideoBtn')
 
 userPronoun.innerHTML = user[0].userName;
 courseName.innerHTML = courseData[0].courseName;
@@ -27,7 +29,7 @@ function fetchPlaylistVideos(playlistId) {
             return response.json();
         })
         .then(data => {
-            vidData  = data;
+            vidData = data;
             console.log('Data:', data);
             // data.items.map(item => item.snippet.resourceId.videoId);
             return data
@@ -37,6 +39,7 @@ function fetchPlaylistVideos(playlistId) {
 
 fetchPlaylistVideos(playlistId).then(data => {
     const title = data.items.map(item => item.snippet.title);
+    const description = data.items.map(item => item.snippet.description);
     const playlist = data.items.map(item => item.snippet.resourceId.videoId);
     console.log(title);
 
@@ -46,9 +49,10 @@ fetchPlaylistVideos(playlistId).then(data => {
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    window.onYouTubeIframeAPIReady = function() {
+    window.onYouTubeIframeAPIReady = function () {
         videoTitle.innerText = title[currentVideoIndex]
-        player = new YT.Player('player', {  
+        videoDescription.innerText = description[currentVideoIndex]
+        player = new YT.Player('player', {
             height: '450',
             width: '800',
             videoId: playlist[currentVideoIndex],
@@ -58,7 +62,7 @@ fetchPlaylistVideos(playlistId).then(data => {
             }
         });
     };
-    
+
     // The API will call this function when the video player is ready.
     function onPlayerReady(event) {
         event.target.playVideo();
@@ -76,17 +80,60 @@ fetchPlaylistVideos(playlistId).then(data => {
         currentVideoIndex++;
         if (currentVideoIndex < playlist.length) {
             videoTitle.innerText = title[currentVideoIndex]
+            videoDescription.innerText = description[currentVideoIndex]
             player.loadVideoById(playlist[currentVideoIndex]);
         } else {
             currentVideoIndex = 0;
             videoTitle.innerHTML = title[currentVideoIndex];
+            videoDescription.innerText = description[currentVideoIndex]
             player.loadVideoById(playlist[currentVideoIndex]);
         }
-    }
 
-    // Event listener for the Next Video button
-    document.getElementById('nextVideoBtn').addEventListener('click', function() {
+        if (currentVideoIndex === 0) {
+            preBtn.style.background = '#E0E0E0';
+            preBtn.disabled = true;
+        }
+        else{
+            preBtn.style.background = '#46b1d8';
+            preBtn.disabled = false;
+        }
+    }
+    if (currentVideoIndex === 0) {
+        preBtn.style.background = '#E0E0E0';
+        preBtn.disabled = true;
+    }
+    //Previous Video button
+    function playPreviousVideo() {
+        currentVideoIndex--;
+        if (currentVideoIndex < playlist.length) {
+            videoTitle.innerText = title[currentVideoIndex]
+            videoDescription.innerText = description[currentVideoIndex]
+            player.loadVideoById(playlist[currentVideoIndex]);
+        } else {
+            currentVideoIndex = 0;
+            videoTitle.innerHTML = title[currentVideoIndex];
+            videoDescription.innerText = description[currentVideoIndex]
+            player.loadVideoById(playlist[currentVideoIndex]);
+        }
+
+        if (currentVideoIndex === 0) {
+            preBtn.style.background = '#E0E0E0';
+            preBtn.disabled = true;
+        }
+        else{
+            preBtn.style.background = '#46b1d8';
+            preBtn.disabled = false;
+            
+        }
+    }
+    
+
+    nextBtn.addEventListener('click', function () {
         playNextVideo();
     });
+    preBtn.addEventListener('click', function () {
+        playPreviousVideo();
+    });
+    
 });
 

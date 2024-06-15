@@ -58,7 +58,7 @@ const storageFunction = () => {
 }
 
 
-registerButton.addEventListener("submit", (event) => {
+registerButton.addEventListener("click", (event) => {
     event.preventDefault()
     storageFunction()
 });

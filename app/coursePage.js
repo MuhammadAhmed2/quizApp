@@ -29,13 +29,16 @@ function fetchPlaylistVideos(playlistId) {
         .then(data => {
             vidData  = data;
             console.log('Data:', data);
-            return data.items.map(item => item.snippet.resourceId.videoId);
+            // data.items.map(item => item.snippet.resourceId.videoId);
+            return data
         });
 };
 
 
-fetchPlaylistVideos(playlistId).then(videoIds => {
-    const playlist = videoIds;
+fetchPlaylistVideos(playlistId).then(data => {
+    const title = data.items.map(item => item.snippet.title);
+    const playlist = data.items.map(item => item.snippet.resourceId.videoId);
+    console.log(title);
 
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
@@ -44,6 +47,7 @@ fetchPlaylistVideos(playlistId).then(videoIds => {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     window.onYouTubeIframeAPIReady = function() {
+        videoTitle.innerText = title[currentVideoIndex]
         player = new YT.Player('player', {  
             height: '450',
             width: '800',
@@ -71,9 +75,11 @@ fetchPlaylistVideos(playlistId).then(videoIds => {
     function playNextVideo() {
         currentVideoIndex++;
         if (currentVideoIndex < playlist.length) {
+            videoTitle.innerText = title[currentVideoIndex]
             player.loadVideoById(playlist[currentVideoIndex]);
         } else {
             currentVideoIndex = 0;
+            videoTitle.innerHTML = title[currentVideoIndex];
             player.loadVideoById(playlist[currentVideoIndex]);
         }
     }

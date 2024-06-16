@@ -7,6 +7,7 @@ let err = document.querySelector('.alert')
 
 // importing User data
 let dataBase = JSON.parse(localStorage.getItem('userData'));
+if(dataBase === null){dataBase=[]}
 console.log(dataBase);
 
 

@@ -5,8 +5,8 @@ let videoDescription = document.getElementById('videoDescription');
 let user = JSON.parse(localStorage.getItem('user'));
 let courseData = JSON.parse(localStorage.getItem('courseData'));
 // Event listener for the Next Video button
-let nextBtn = document.getElementById('nextVideoBtn')
-let preBtn = document.getElementById('prevVideoBtn')
+let nextBtn = document.getElementById('nextVideoBtn');
+let preBtn = document.getElementById('prevVideoBtn');
 
 userPronoun.innerHTML = user[0].userName;
 courseName.innerHTML = courseData[0].courseName;
@@ -19,7 +19,7 @@ const playlistId = courseData[0].youtubePlaylistLink.split('list=')[1]; // Extra
 
 
 function domUpdate(vidData) {
-    videoTitle.innerHTML = vidData.snippet.title
+    videoTitle.innerHTML = vidData.snippet.title;
 };
 
 function fetchPlaylistVideos(playlistId) {
@@ -31,7 +31,6 @@ function fetchPlaylistVideos(playlistId) {
         .then(data => {
             vidData = data;
             console.log('Data:', data);
-            // data.items.map(item => item.snippet.resourceId.videoId);
             return data
         });
 };
